@@ -1,0 +1,24 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+import { technologiesData } from '../../../data/technologies';
+---
+
+<section id="services" class="py-20 bg-white">
+  <Container>
+    <SectionHeading
+      eyebrow="Capabilities"
+      title="Services that turn"
+      highlight="Ideas into impact"
+      align="center"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {technologiesData.map((tech) => (
+        <div class="p-6 rounded-2xl border border-[#E6E2DF] bg-[#FAF7F5]">
+          <h3 class="text-xl font-heading font-medium text-[#111315] mb-2">{tech.name}</h3>
+          <p class="text-sm font-sans text-[#4A5157]">{tech.description}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

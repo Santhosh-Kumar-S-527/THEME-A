@@ -1,0 +1,56 @@
+---
+import BadgeTag from '../common/BadgeTag.astro';
+import type { TechItem } from '../../types';
+
+interface Props {
+  tech: TechItem;
+}
+
+const { tech } = Astro.props;
+---
+
+<div class="bg-white border border-[#E6E2DF] hover:border-[#E7430B] rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-xl flex flex-col justify-between group">
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <span class="text-xs font-mono uppercase tracking-wider text-[#6B737A]">
+        {tech.category}
+      </span>
+      {tech.badge && (
+        <BadgeTag variant="accent" size="sm">
+          {tech.badge}
+        </BadgeTag>
+      )}
+    </div>
+
+    <h3 class="text-xl sm:text-2xl font-heading font-medium text-[#111315] mb-3 group-hover:text-[#E7430B] transition-colors">
+      {tech.name}
+    </h3>
+
+    <p class="text-sm font-sans text-[#4A5157] leading-relaxed mb-6">
+      {tech.description}
+    </p>
+
+    {tech.capabilities && (
+      <ul class="space-y-2 mb-6">
+        {tech.capabilities.map((cap) => (
+          <li class="flex items-start text-xs font-sans text-[#4A5157]">
+            <svg class="w-4 h-4 text-[#E7430B] shrink-0 mr-2 mt-0.5" viewBox="0 0 16 16" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
+            </svg>
+            <span>{cap}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+
+  <div class="pt-6 border-t border-[#E6E2DF]">
+    <div class="flex flex-wrap gap-1.5">
+      {tech.tags.map((tag) => (
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#FAF7F5] border border-[#E6E2DF] text-[#6B737A]">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>

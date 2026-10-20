@@ -1,0 +1,241 @@
+---
+import Container from '../../common/Container.astro';
+
+const services = [
+  {
+    id: 'ai-ml',
+    label: 'AI & ML',
+    title: 'AI & Machine Learning',
+    description:
+      'We design and deploy practical AI systems that automate workflows, uncover valuable insights, and help teams make faster, more confident decisions.',
+    image: '/images/technologies/service-ai-ml.jpg',
+    tags: ['AI Strategy', 'Generative AI', 'Automation'],
+  },
+  {
+    id: 'web-apps',
+    label: 'Web Apps',
+    title: 'Enterprise Web Applications',
+    description:
+      'We build high-concurrency, type-safe web platforms with sub-second page loads, decoupled architectures, and flawless responsive user experiences.',
+    image: '/images/technologies/service-web-apps.jpg',
+    tags: ['Astro & Next.js', 'Micro-frontends', 'Edge Performance'],
+  },
+  {
+    id: 'mobile-apps',
+    label: 'Mobile Apps',
+    title: 'Cross-Platform Mobile',
+    description:
+      'We engineer native-speed mobile applications with hardware sensor synergy, biometric security enclaves, and seamless offline data synchronization.',
+    image: '/images/technologies/service-mobile-apps.jpg',
+    tags: ['iOS & Android', 'Offline-First', 'BLE Telemetry'],
+  },
+  {
+    id: 'cloud',
+    label: 'Cloud',
+    title: 'Cloud Architecture & DevOps',
+    description:
+      'We architect resilient multi-region cloud foundations on AWS and GCP with automated failover, immutable infrastructure, and distributed observability.',
+    image: '/images/technologies/service-cloud.jpg',
+    tags: ['Kubernetes', 'Multi-Region', 'Zero-Trust GitOps'],
+  },
+  {
+    id: 'data',
+    label: 'Data',
+    title: 'Data & Event Streaming',
+    description:
+      'We transform massive distributed event streams into live analytical intelligence, enabling real-time dashboards and instant operational clarity.',
+    image: '/images/technologies/service-data.jpg',
+    tags: ['Apache Kafka', 'ClickHouse', 'Real-Time ETL'],
+  },
+  {
+    id: 'automation',
+    label: 'Automation',
+    title: 'Intelligent Automation',
+    description:
+      'We eliminate repetitive manual bottlenecks through deterministic orchestrators, self-healing queues, and robust enterprise software connectors.',
+    image: '/images/technologies/service-automation.jpg',
+    tags: ['Process Mining', 'Workflow Engines', 'Legacy Sync'],
+  },
+  {
+    id: 'ui-ux',
+    label: 'UI/UX',
+    title: 'Design Systems & UX/UI',
+    description:
+      'We craft intuitive, human-centered interfaces grounded in user research, accessible design tokens, and fluid micro-interactions for enterprise tools.',
+    image: '/images/technologies/service-ui-ux.jpg',
+    tags: ['Design Tokens', 'WCAG 2.2 AA', 'Design Systems'],
+  },
+];
+
+const initialService = services[0];
+---
+
+<section id="services" class="py-20 sm:py-28 bg-white border-b border-[#E6E2DF]">
+  <Container>
+    <!-- 1. Header & Title: Centered, clean two-line title without colored words or eyebrows -->
+    <div class="text-center mb-12 sm:mb-16">
+      <h2 class="text-3xl sm:text-4xl lg:text-[36px] font-heading font-normal text-[#111315] leading-[1.2] tracking-[-0.03em]">
+        Services that turn <br />
+        Ideas into impact
+      </h2>
+    </div>
+
+    <!-- 2. Navigation Tabs: Horizontal pill-less strip with 2px underline indicator on active tab -->
+    <div
+      class="flex items-center justify-start sm:justify-center gap-8 sm:gap-12 overflow-x-auto border-b border-[#E6E2DF] mb-10 pb-0 no-scrollbar"
+      role="tablist"
+      aria-label="Services Disciplines"
+    >
+      {services.map((svc, index) => {
+        const isActive = index === 0;
+        return (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${svc.id}`}
+            aria-selected={isActive ? 'true' : 'false'}
+            aria-controls="services-tabpanel"
+            tabindex={isActive ? 0 : -1}
+            class:list={[
+              'service-tab relative pb-3 text-sm sm:text-base font-sans font-medium transition-colors cursor-pointer border-b-2 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#E7430B]',
+              isActive
+                ? 'border-[#E7430B] text-[#E7430B]'
+                : 'border-transparent text-[#6B737A] hover:text-[#111315]'
+            ]}
+            data-service-id={svc.id}
+          >
+            {svc.label}
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- 3. Dynamic Section Panel Layout (Full-width Stacked Presentation) -->
+    <div
+      id="services-tabpanel"
+      role="tabpanel"
+      aria-labelledby={`tab-${initialService.id}`}
+      class="w-full"
+      data-services={JSON.stringify(services)}
+    >
+      <!-- Top: Full-Width Featured Image Container (rounded-3xl, 24px radius per DESIGN.md) -->
+      <div class="relative w-full aspect-[16/8] sm:aspect-[21/9] rounded-3xl overflow-hidden bg-[#FAF7F5] border border-[#E6E2DF] shadow-sm">
+        <img
+          id="service-featured-image"
+          src={initialService.image}
+          alt={initialService.title}
+          class="w-full h-full object-cover transition-opacity duration-200 block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Bottom: Two-Column Metadata Row (Below Image with mt-8 gap) -->
+      <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+        <!-- Left Column: H3 Title + 3 Pill Badge Tags -->
+        <div class="lg:col-span-6">
+          <h3
+            id="service-title"
+            class="text-2xl lg:text-[24px] font-heading font-medium text-[#111315] mb-4 leading-snug"
+          >
+            {initialService.title}
+          </h3>
+
+          <div id="service-tags" class="flex flex-wrap gap-2">
+            {initialService.tags.map((tag) => (
+              <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium font-sans bg-[rgba(240,91,54,0.12)] text-[#E7430B] border border-[#F05B36]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right Column: Concise 2-line Description Paragraph -->
+        <div class="lg:col-span-6">
+          <p
+            id="service-description"
+            class="text-sm sm:text-base font-sans text-[#4A5157] leading-[1.6] max-w-xl"
+          >
+            {initialService.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  interface ServiceItemData {
+    id: string;
+    label: string;
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+  }
+
+  const panel = document.getElementById('services-tabpanel');
+  const services: ServiceItemData[] = panel?.dataset.services
+    ? JSON.parse(panel.dataset.services)
+    : [];
+
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('.service-tab');
+  const featuredImage = document.getElementById('service-featured-image') as HTMLImageElement | null;
+  const serviceTitle = document.getElementById('service-title');
+  const serviceTags = document.getElementById('service-tags');
+  const serviceDescription = document.getElementById('service-description');
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const serviceId = btn.getAttribute('data-service-id');
+      const service = services.find((s) => s.id === serviceId);
+      if (!service) return;
+
+      // 1. Update tab styles & accessibility states
+      tabButtons.forEach((b) => {
+        const isCurrent = b === btn;
+        b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+        b.setAttribute('tabindex', isCurrent ? '0' : '-1');
+        if (isCurrent) {
+          b.className = 'service-tab relative pb-3 text-sm sm:text-base font-sans font-medium transition-colors cursor-pointer border-b-2 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#E7430B] border-[#E7430B] text-[#E7430B]';
+        } else {
+          b.className = 'service-tab relative pb-3 text-sm sm:text-base font-sans font-medium transition-colors cursor-pointer border-b-2 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#E7430B] border-transparent text-[#6B737A] hover:text-[#111315]';
+        }
+      });
+
+      // 2. Update panel aria-labelledby
+      if (panel) {
+        panel.setAttribute('aria-labelledby', `tab-${service.id}`);
+      }
+
+      // 3. Update Image
+      if (featuredImage) {
+        featuredImage.style.opacity = '0.6';
+        setTimeout(() => {
+          featuredImage.src = service.image;
+          featuredImage.alt = service.title;
+          featuredImage.style.opacity = '1';
+        }, 80);
+      }
+
+      // 4. Update Title
+      if (serviceTitle) {
+        serviceTitle.textContent = service.title;
+      }
+
+      // 5. Update Description
+      if (serviceDescription) {
+        serviceDescription.textContent = service.description;
+      }
+
+      // 6. Update Tags
+      if (serviceTags) {
+        serviceTags.innerHTML = service.tags
+          .map(
+            (tag) =>
+              `<span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium font-sans bg-[rgba(240,91,54,0.12)] text-[#E7430B] border border-[#F05B36]">${tag}</span>`
+          )
+          .join('');
+      }
+    });
+  });
+</script>

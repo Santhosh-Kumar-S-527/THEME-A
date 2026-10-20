@@ -1,0 +1,24 @@
+---
+import Container from '../../common/Container.astro';
+import { statsData } from '../../../data/stats';
+---
+
+<section class="py-16 bg-white">
+  <Container>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {statsData.map((stat) => (
+        <div class="p-6 rounded-2xl bg-[#FDEEE8] border border-[#E6E2DF]/60 text-center">
+          <div class="font-heading font-bold text-4xl sm:text-5xl text-[#E7430B] mb-2">
+            {stat.value}
+          </div>
+          <div class="font-heading font-medium text-base text-[#111315] mb-1">
+            {stat.label}
+          </div>
+          {stat.caption && (
+            <p class="text-xs font-sans text-[#4A5157]">{stat.caption}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

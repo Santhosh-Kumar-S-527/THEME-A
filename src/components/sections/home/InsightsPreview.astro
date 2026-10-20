@@ -1,0 +1,28 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+import Button from '../../common/Button.astro';
+---
+
+<section id="insights" class="py-20 bg-[#FAF7F5] border-t border-[#E6E2DF]">
+  <Container>
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
+      <SectionHeading
+        eyebrow="Knowledge & Research"
+        title="Technology that turns"
+        highlight="Possibilities into Progress"
+        class="!mb-0"
+      />
+      <Button href="/technologies" variant="secondary" size="sm">
+        View All Blogs
+      </Button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 bg-white border border-[#E6E2DF] rounded-2xl">
+        <span class="text-xs font-mono text-[#6B737A]">October 2026</span>
+        <h3 class="font-heading font-medium text-base text-[#111315] mt-2 mb-2">Modern Distributed Architectures</h3>
+        <p class="text-xs font-sans text-[#4A5157]">Designing scalable systems for high concurrency and zero downtime.</p>
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,60 @@
+---
+import Container from '../../common/Container.astro';
+import CardJob from '../../cards/CardJob.astro';
+import Button from '../../common/Button.astro';
+import type { JobItem } from '../../../types';
+
+const sampleJobs: JobItem[] = [
+  {
+    id: 'ai-staff',
+    title: 'Senior AI & ML Solutions Architect',
+    department: 'Artificial Intelligence',
+    location: 'Chennai, India',
+    type: 'Full Time',
+    mode: 'Hybrid',
+    description: 'Lead architecture and deployment for large-scale enterprise LLM fine-tuning, RAG pipelines, and vision models.',
+    tags: ['Full Time', 'Hybrid', 'Chennai', 'Staff'],
+    applyUrl: 'mailto:careers@lingaasys.com?subject=Senior%20AI%20Solutions%20Architect',
+  },
+  {
+    id: 'distributed-eng',
+    title: 'Principal Cloud Platform Engineer',
+    department: 'Infrastructure',
+    location: 'Remote / Hybrid',
+    type: 'Full Time',
+    mode: 'Remote',
+    description: 'Design multi-region Kubernetes topologies, zero-trust security postures, and automated GitOps CI/CD flows.',
+    tags: ['Full Time', 'Remote', 'Kubernetes', 'Principal'],
+    applyUrl: 'mailto:careers@lingaasys.com?subject=Principal%20Cloud%20Platform%20Engineer',
+  },
+];
+---
+
+<section id="open-positions" class="py-20 bg-white">
+  <Container>
+    <div class="max-w-2xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-[0.12em] text-[#E7430B] font-sans">
+        Current Openings
+      </span>
+      <h2 class="text-3xl font-heading font-medium text-[#111315] mt-2">
+        Find Your Next Chapter
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      {sampleJobs.map((job) => (
+        <CardJob job={job} />
+      ))}
+    </div>
+
+    <div class="p-8 rounded-3xl bg-[#FAF7F5] border border-[#E6E2DF] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <h3 class="font-heading font-medium text-lg text-[#111315]">Don't see your specific role?</h3>
+        <p class="text-xs font-sans text-[#4A5157]">We are always excited to meet exceptional engineers, researchers, and designers.</p>
+      </div>
+      <Button href="mailto:careers@lingaasys.com" variant="secondary" size="sm">
+        Send General Application
+      </Button>
+    </div>
+  </Container>
+</section>

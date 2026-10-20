@@ -1,0 +1,79 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+import CardValue from '../../cards/CardValue.astro';
+import CardJob from '../../cards/CardJob.astro';
+import Button from '../../common/Button.astro';
+import { valuesData } from '../../../data/values';
+import { jobsData } from '../../../data/jobs';
+---
+
+<section id="careers-values" class="py-24 sm:py-32 bg-white border-b border-[#E6E2DF]">
+  <Container>
+    <!-- Left-aligned Section Header with Right Supporting Paragraph -->
+    <SectionHeading
+      eyebrow="Culture & Growth"
+      title="Careers and Values"
+      description="Our principles guide how we make decisions, how we treat partners, and how we foster growth across our engineering teams."
+    />
+
+    <!-- Part 1: Four Values in a 4-column row -->
+    <div class="mb-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {valuesData.map((val) => (
+          <CardValue value={val} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Part 2: Two Job Opportunity Cards Side-by-Side -->
+    <div class="mt-20 pt-16 border-t border-[#E6E2DF]">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.12em] text-[#E7430B] font-sans block mb-1">
+            Open Opportunities
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-heading font-medium text-[#111315]">
+            Featured Engineering Roles
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm font-sans text-[#4A5157] max-w-sm">
+          Join a team solving high-impact enterprise architecture challenges.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {jobsData.map((job) => (
+          <CardJob job={job} />
+        ))}
+      </div>
+
+      <!-- Closing Row: Outline Pill "View Open Positions" & Contact Email -->
+      <div class="p-8 rounded-3xl bg-[#FAF7F5] border border-[#E6E2DF] flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4 text-center sm:text-left">
+          <div class="w-12 h-12 rounded-full bg-[rgba(240,91,54,0.12)] text-[#E7430B] flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-heading font-semibold text-[#111315] text-base">Looking for a different domain?</h4>
+            <p class="text-xs font-sans text-[#4A5157]">We're constantly expanding. Inquire with our hiring team directly.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <Button href="/careers" variant="secondary" size="sm">
+            View Open Positions
+          </Button>
+          <a
+            href="mailto:careers@lingaasys.com"
+            class="text-xs font-mono font-semibold text-[#E7430B] hover:text-[#F4511E] underline transition-colors"
+          >
+            careers@lingaasys.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

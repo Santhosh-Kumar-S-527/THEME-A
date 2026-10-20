@@ -1,0 +1,23 @@
+---
+import Container from '../../common/Container.astro';
+import CardValue from '../../cards/CardValue.astro';
+import { valuesData } from '../../../data/values';
+---
+
+<section id="values" class="py-20 bg-[#FAF7F5] border-y border-[#E6E2DF]">
+  <Container>
+    <div class="max-w-2xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-[0.12em] text-[#E7430B] font-sans">
+        Our Principles
+      </span>
+      <h2 class="text-3xl font-heading font-medium text-[#111315] mt-2">
+        Values Grounded in Engineering Precision
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {valuesData.map((val) => (
+        <CardValue value={val} />
+      ))}
+    </div>
+  </Container>
+</section>

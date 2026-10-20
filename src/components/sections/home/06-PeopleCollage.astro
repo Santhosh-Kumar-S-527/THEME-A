@@ -1,0 +1,75 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+---
+
+<section id="people" class="py-24 sm:py-32 bg-white relative overflow-hidden border-b border-[#E6E2DF]">
+  <!-- Decorative oversized "PEOPLE" word in background -->
+  <div
+    class="absolute inset-0 flex items-center justify-center opacity-[0.04] select-none pointer-events-none z-0"
+    aria-hidden="true"
+  >
+    <span class="display-ghost text-[#111315]">PEOPLE</span>
+  </div>
+
+  <Container class="relative z-10">
+    <!-- Section Title & Right Supporting Paragraph -->
+    <SectionHeading
+      eyebrow="Culture & Team"
+      title="People who connect."
+      highlight="Ideas that move"
+      description="Behind every robust line of code and complex neural model is a multidisciplinary team grounded in empathy, rigorous craft, and shared purpose."
+    />
+
+    <!-- Overlapping Tilted Collage Cards -->
+    <div class="relative max-w-5xl mx-auto my-16 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 items-center">
+      <!-- Card 1 (Tilted slightly left) -->
+      <div class="rounded-3xl bg-[#FAF7F5] border border-[#E6E2DF] p-6 shadow-md transform sm:-rotate-2 hover:rotate-0 transition-transform duration-300">
+        <div class="aspect-[4/3] rounded-2xl bg-[#FDEEE8] overflow-hidden mb-4 flex items-center justify-center relative">
+          <svg class="w-16 h-16 text-[#E7430B]/40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-medium text-base text-[#111315]">Architectural Collective</h3>
+        <p class="text-xs font-sans text-[#6B737A] mt-1">Cross-functional engineers pairing daily across domains.</p>
+      </div>
+
+      <!-- Card 2 (Center, Raised with Accent Touch) -->
+      <div class="rounded-3xl bg-white border-2 border-[#E7430B]/30 p-6 shadow-xl sm:-translate-y-4 relative z-20">
+        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#FAF7F5] to-[#FDEEE8] overflow-hidden mb-4 flex items-center justify-center">
+          <div class="w-14 h-14 rounded-full bg-[#E7430B] text-white flex items-center justify-center shadow-lg">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="mb-1">
+          <span class="text-[11px] font-mono text-[#E7430B] font-semibold uppercase">Human Centricity</span>
+        </div>
+        <h3 class="font-heading font-medium text-lg text-[#111315]">Empathetic Systems</h3>
+        <p class="text-xs font-sans text-[#4A5157] mt-1">Valuing human experience at every product touchpoint.</p>
+      </div>
+
+      <!-- Card 3 (Tilted slightly right) -->
+      <div class="rounded-3xl bg-[#FAF7F5] border border-[#E6E2DF] p-6 shadow-md transform sm:rotate-2 hover:rotate-0 transition-transform duration-300">
+        <div class="aspect-[4/3] rounded-2xl bg-[#FDEEE8] overflow-hidden mb-4 flex items-center justify-center relative">
+          <svg class="w-16 h-16 text-[#E7430B]/40" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-medium text-base text-[#111315]">Curious Inquiry</h3>
+        <p class="text-xs font-sans text-[#6B737A] mt-1">Challenging assumptions to unlock genuine product breakthroughs.</p>
+      </div>
+    </div>
+
+    <!-- Centered Quote in Italic H4 -->
+    <div class="max-w-2xl mx-auto text-center mt-12 pt-12 border-t border-[#E6E2DF]">
+      <blockquote class="text-xl sm:text-2xl font-heading font-medium italic text-[#111315] leading-relaxed">
+        "We believe great work happens when people feel valued and respected."
+      </blockquote>
+      <p class="text-xs font-mono font-semibold uppercase tracking-widest text-[#E7430B] mt-4">
+        — The Lingaasys Team Creed
+      </p>
+    </div>
+  </Container>
+</section>

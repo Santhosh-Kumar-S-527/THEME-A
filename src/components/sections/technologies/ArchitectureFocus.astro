@@ -1,0 +1,45 @@
+---
+import Container from '../../common/Container.astro';
+import BadgeTag from '../../common/BadgeTag.astro';
+---
+
+<section class="py-20 bg-white">
+  <Container>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <BadgeTag variant="accent" size="sm" class="mb-4">
+          Architectural Tenets
+        </BadgeTag>
+        <h2 class="text-3xl font-heading font-normal text-[#111315] mb-4">
+          Resilience, Speed & Observable Systems
+        </h2>
+        <p class="text-base font-sans text-[#4A5157] leading-relaxed mb-6">
+          Every architecture is engineered with distributed tracing, zero-trust security postures, and modular service boundaries that evolve alongside your enterprise roadmap.
+        </p>
+        <ul class="space-y-3 font-sans text-sm text-[#4A5157]">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E7430B]"></span>
+            Multi-region active-active deployment topologies
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E7430B]"></span>
+            Strict semantic type safety across service boundaries
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E7430B]"></span>
+            Deterministic infrastructure automation via GitOps
+          </li>
+        </ul>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-[#FAF7F5] border border-[#E6E2DF]">
+        <div class="font-mono text-xs text-[#6B737A] mb-4">// System Architecture Overview</div>
+        <div class="space-y-3 font-mono text-xs">
+          <div class="p-3 bg-white rounded-xl border border-[#E6E2DF]">Edge Layer: Global CDN & WAF Routing</div>
+          <div class="p-3 bg-[#FDEEE8] text-[#E7430B] rounded-xl border border-[#E6E2DF]">Application: Micro-frontends & GraphQL Mesh</div>
+          <div class="p-3 bg-white rounded-xl border border-[#E6E2DF]">Data & AI: Distributed Streaming & Vector Store</div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

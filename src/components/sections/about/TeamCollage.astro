@@ -1,0 +1,28 @@
+---
+import Container from '../../common/Container.astro';
+---
+
+<section class="py-24 bg-white relative overflow-hidden">
+  <!-- Ghost Decorative Text -->
+  <div class="absolute inset-0 flex items-center justify-center opacity-5 select-none pointer-events-none" aria-hidden="true">
+    <span class="display-ghost text-[#111315]">PEOPLE</span>
+  </div>
+
+  <Container class="relative z-10 text-center">
+    <div class="max-w-3xl mx-auto mb-16">
+      <blockquote class="text-2xl sm:text-3xl font-heading font-medium italic text-[#111315] leading-relaxed">
+        "We believe great work happens when people feel valued and respected."
+      </blockquote>
+      <p class="text-sm font-sans text-[#E7430B] mt-4 font-semibold uppercase tracking-wider">
+        — The Lingaasys Collective
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="h-48 rounded-2xl bg-[#FAF7F5] border border-[#E6E2DF] flex items-center justify-center text-[#6B737A] text-xs font-mono">Team Culture</div>
+      <div class="h-48 rounded-2xl bg-[#FDEEE8] border border-[#E6E2DF] flex items-center justify-center text-[#E7430B] text-xs font-mono">Collaborative Engineering</div>
+      <div class="h-48 rounded-2xl bg-[#FAF7F5] border border-[#E6E2DF] flex items-center justify-center text-[#6B737A] text-xs font-mono">Design Research</div>
+      <div class="h-48 rounded-2xl bg-[#FDEEE8] border border-[#E6E2DF] flex items-center justify-center text-[#E7430B] text-xs font-mono">Human Connection</div>
+    </div>
+  </Container>
+</section>

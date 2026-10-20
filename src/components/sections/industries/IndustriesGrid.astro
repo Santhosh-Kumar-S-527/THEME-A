@@ -1,0 +1,15 @@
+---
+import Container from '../../common/Container.astro';
+import CardIndustry from '../../cards/CardIndustry.astro';
+import { industriesData } from '../../../data/industries';
+---
+
+<section id="industries-grid" class="py-24 bg-[#050708] text-white">
+  <Container>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {industriesData.map((ind) => (
+        <CardIndustry industry={ind} showDetails={true} />
+      ))}
+    </div>
+  </Container>
+</section>

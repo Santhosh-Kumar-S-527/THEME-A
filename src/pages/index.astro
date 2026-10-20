@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/home/01-Hero.astro';
+import Partners from '../components/sections/home/02-Partners.astro';
+import About from '../components/sections/home/03-About.astro';
+import ServicesTabs from '../components/sections/home/04-ServicesTabs.astro';
+import IndustriesDark from '../components/sections/home/05-IndustriesDark.astro';
+import PeopleCollage from '../components/sections/home/06-PeopleCollage.astro';
+import CareersValues from '../components/sections/home/07-CareersValues.astro';
+import Insights from '../components/sections/home/08-Insights.astro';
+import Testimonials from '../components/sections/home/09-Testimonials.astro';
+import CtaDark from '../components/sections/home/10-CtaDark.astro';
+---
+
+<BaseLayout
+  title="Lingaasys - Enterprise Software, AI & Cloud Engineering"
+  description="Lingaasys builds mission-critical enterprise software, custom AI systems, and resilient cloud architectures crafted with human empathy."
+>
+  <!-- 01. Hero Section -->
+  <Hero />
+
+  <!-- 02. Partner Marquee Row -->
+  <Partners />
+
+  <!-- 03. About Overview (Who is Lingaasys / What we build) -->
+  <About />
+
+  <!-- 04. Services Tabs Section (Services that turn Ideas into impact) -->
+  <ServicesTabs />
+
+  <!-- 05. Industries Dark Section (Technology Built For Every Industry) -->
+  <IndustriesDark />
+
+  <!-- 06. People Section (People who connect. Ideas that move) -->
+  <PeopleCollage />
+
+  <!-- 07. Careers and Values Section (4 Values + Open Roles) -->
+  <CareersValues />
+
+  <!-- 08. Insights Section (Technology that turns Possibilities into Progress) -->
+  <Insights />
+
+  <!-- 09. Testimonials Carousel Section (Built with people. Connected by technology.) -->
+  <Testimonials />
+
+  <!-- 10. Closing CTA Dark Section (Let's Build What We Create Together) -->
+  <CtaDark />
+</BaseLayout>

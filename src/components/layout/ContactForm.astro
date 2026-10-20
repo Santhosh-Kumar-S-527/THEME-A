@@ -1,0 +1,156 @@
+---
+import Button from '../common/Button.astro';
+
+interface Props {
+  id?: string;
+  theme?: 'dark' | 'light';
+}
+
+const { id = 'contact', theme = 'dark' } = Astro.props;
+const isDark = theme === 'dark';
+---
+
+<div id={id} class:list={[
+  'w-full rounded-3xl p-8 sm:p-12 border relative overflow-hidden transition-all',
+  isDark ? 'bg-[#111519] border-[#293036] text-white shadow-2xl' : 'bg-white border-[#E6E2DF] text-[#111315] shadow-lg'
+]}>
+  <div class="max-w-2xl mx-auto text-center mb-8">
+    <span class="inline-block text-xs font-bold uppercase tracking-[0.12em] text-[#F05B36] mb-2 font-sans">
+      Get In Touch
+    </span>
+    <h2 class:list={[
+      'text-2xl sm:text-3xl font-heading font-medium tracking-tight mb-3',
+      isDark ? 'text-white' : 'text-[#111315]'
+    ]}>
+      Let's Build What We Create <span class="text-[#F05B36]">Together</span>
+    </h2>
+    <p class:list={[
+      'text-sm sm:text-base font-sans',
+      isDark ? 'text-[#CFC9C5]' : 'text-[#4A5157]'
+    ]}>
+      Have an enterprise challenge, an architecture question, or a new venture in mind? Talk with our engineering leadership.
+    </p>
+  </div>
+
+  <form id="lead-contact-form" class="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+    <!-- Full Name -->
+    <div>
+      <label for="contact-name" class:list={['block text-xs font-medium font-sans mb-1.5', isDark ? 'text-[#F7F8F8]' : 'text-[#111315]']}>
+        Full Name *
+      </label>
+      <input
+        type="text"
+        id="contact-name"
+        name="fullName"
+        required
+        placeholder="Ada Lovelace"
+        class:list={[
+          'w-full px-4 py-3 rounded-xl text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-[#E7430B]',
+          isDark ? 'bg-[#050708] border-[#293036] text-white placeholder-neutral-500' : 'bg-[#FAF7F5] border-[#E6E2DF] text-[#111315] placeholder-neutral-400'
+        ]}
+      />
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="contact-email" class:list={['block text-xs font-medium font-sans mb-1.5', isDark ? 'text-[#F7F8F8]' : 'text-[#111315]']}>
+        Work Email *
+      </label>
+      <input
+        type="email"
+        id="contact-email"
+        name="email"
+        required
+        placeholder="ada@enterprise.com"
+        class:list={[
+          'w-full px-4 py-3 rounded-xl text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-[#E7430B]',
+          isDark ? 'bg-[#050708] border-[#293036] text-white placeholder-neutral-500' : 'bg-[#FAF7F5] border-[#E6E2DF] text-[#111315] placeholder-neutral-400'
+        ]}
+      />
+    </div>
+
+    <!-- Company -->
+    <div>
+      <label for="contact-company" class:list={['block text-xs font-medium font-sans mb-1.5', isDark ? 'text-[#F7F8F8]' : 'text-[#111315]']}>
+        Company / Organization
+      </label>
+      <input
+        type="text"
+        id="contact-company"
+        name="company"
+        placeholder="Global Dynamics Inc."
+        class:list={[
+          'w-full px-4 py-3 rounded-xl text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-[#E7430B]',
+          isDark ? 'bg-[#050708] border-[#293036] text-white placeholder-neutral-500' : 'bg-[#FAF7F5] border-[#E6E2DF] text-[#111315] placeholder-neutral-400'
+        ]}
+      />
+    </div>
+
+    <!-- Service Interest -->
+    <div>
+      <label for="contact-service" class:list={['block text-xs font-medium font-sans mb-1.5', isDark ? 'text-[#F7F8F8]' : 'text-[#111315]']}>
+        Area of Interest
+      </label>
+      <select
+        id="contact-service"
+        name="serviceInterest"
+        class:list={[
+          'w-full px-4 py-3 rounded-xl text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-[#E7430B]',
+          isDark ? 'bg-[#050708] border-[#293036] text-white' : 'bg-[#FAF7F5] border-[#E6E2DF] text-[#111315]'
+        ]}
+      >
+        <option value="ai-ml">AI & Machine Learning</option>
+        <option value="web-platforms">Enterprise Web Applications</option>
+        <option value="cloud-devops">Cloud Architecture & DevOps</option>
+        <option value="data-engineering">Data & Event Streaming</option>
+        <option value="intelligent-automation">Intelligent Automation</option>
+        <option value="general-consultation">Strategic Advisory</option>
+      </select>
+    </div>
+
+    <!-- Message -->
+    <div class="sm:col-span-2">
+      <label for="contact-message" class:list={['block text-xs font-medium font-sans mb-1.5', isDark ? 'text-[#F7F8F8]' : 'text-[#111315]']}>
+        Project Details / Message *
+      </label>
+      <textarea
+        id="contact-message"
+        name="message"
+        rows="3"
+        required
+        placeholder="Tell us about your objectives, timelines, and technical challenges..."
+        class:list={[
+          'w-full px-4 py-3 rounded-xl text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-[#E7430B]',
+          isDark ? 'bg-[#050708] border-[#293036] text-white placeholder-neutral-500' : 'bg-[#FAF7F5] border-[#E6E2DF] text-[#111315] placeholder-neutral-400'
+        ]}
+      ></textarea>
+    </div>
+
+    <!-- Feedback banner -->
+    <div id="contact-status" class="sm:col-span-2 hidden p-3 rounded-xl text-xs font-medium text-center"></div>
+
+    <!-- Submit Button -->
+    <div class="sm:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+      <p class:list={['text-xs font-mono', isDark ? 'text-[#6B737A]' : 'text-[#6B737A]']}>
+        Guaranteed response within 24 business hours.
+      </p>
+      <Button type="submit" variant="primary" size="md" withArrow={true}>
+        Send Message
+      </Button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('lead-contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('contact-status');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!status) return;
+
+    status.className = 'sm:col-span-2 p-3 rounded-xl text-xs font-medium text-center bg-emerald-950 text-emerald-200 border border-emerald-800';
+    status.textContent = '✓ Thank you! Your message has been received. Our solutions team will be in touch shortly.';
+    form.reset();
+  });
+</script>

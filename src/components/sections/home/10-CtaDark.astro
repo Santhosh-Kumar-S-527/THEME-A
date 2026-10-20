@@ -1,0 +1,42 @@
+---
+import Container from '../../common/Container.astro';
+import Button from '../../common/Button.astro';
+---
+
+<section id="cta" class="py-24 sm:py-32 bg-[#050708] text-white relative overflow-hidden">
+  <!-- Subtle dark photographic silk/wave abstract gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#050708] via-[#111519] to-[#1e100a] opacity-95"></div>
+  <div class="absolute -top-24 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-[#E7430B]/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+  <Container class="relative z-10 text-center">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-block text-xs font-bold uppercase tracking-[0.16em] text-[#F05B36] font-sans mb-4">
+        Ready to Innovate
+      </span>
+
+      <!-- Headline: "Let's Build What We Create Together" with Together in Accent Coral -->
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-heading font-medium tracking-tight text-white mb-6 leading-tight">
+        Let's Build What We Create <span class="text-[#F05B36]">Together</span>
+      </h2>
+
+      <p class="text-base sm:text-lg font-sans text-[#CFC9C5] max-w-xl mx-auto mb-10 leading-relaxed">
+        Whether you are modernizing core enterprise systems, architecting autonomous AI pipelines, or launching a new venture, our engineers are ready.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <Button href="#contact" variant="primary" size="lg" withArrow={true}>
+          Send Message
+        </Button>
+        <Button href="/about" variant="outline-dark" size="lg">
+          Learn More About Us
+        </Button>
+      </div>
+
+      <div class="mt-12 flex items-center justify-center gap-6 text-xs font-mono text-[#6B737A]">
+        <span>✓ Direct Architect Access</span>
+        <span>✓ Non-Disclosure Protection</span>
+        <span>✓ Rapid Discovery</span>
+      </div>
+    </div>
+  </Container>
+</section>

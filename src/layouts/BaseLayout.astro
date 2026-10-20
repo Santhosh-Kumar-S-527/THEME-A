@@ -1,0 +1,60 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+import AnnouncementBar from '../components/layout/AnnouncementBar.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import ChatbotTrigger from '../components/layout/ChatbotTrigger.astro';
+import Footer from '../components/layout/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showAnnouncement?: boolean;
+}
+
+const {
+  title = 'Lingaasys — Enterprise Software & Digital Solutions',
+  description = 'Lingaasys is an enterprise technology engineering partner specializing in custom AI, distributed web platforms, and human-centered systems.',
+  showAnnouncement = true,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts: Space Grotesk, Sora, Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white text-[#111315] min-h-screen flex flex-col font-sans antialiased selection:bg-[#FDEEE8] selection:text-[#E7430B]">
+    {showAnnouncement && <AnnouncementBar />}
+    
+    <!-- Navbar Component -->
+    <Navbar currentPath={currentPath} />
+
+    <!-- Main Page Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Floating Chatbot Trigger Component -->
+    <ChatbotTrigger />
+
+    <!-- Footer Component (wraps ContactForm) -->
+    <Footer />
+  </body>
+</html>

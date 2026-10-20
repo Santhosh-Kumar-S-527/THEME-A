@@ -1,0 +1,63 @@
+---
+import Container from '../../common/Container.astro';
+import { partnersData } from '../../../data/partners';
+---
+
+<section class="py-12 bg-white border-y border-[#E6E2DF] overflow-hidden" aria-label="Trusted Enterprise Partners">
+  <Container class="text-center mb-6">
+    <p class="text-xs font-mono uppercase tracking-[0.16em] text-[#6B737A]">
+      We Have Partnered with Global Innovators
+    </p>
+  </Container>
+
+  <!-- Marquee Container -->
+  <div class="relative w-full overflow-hidden flex items-center group">
+    <!-- Gradient Masks -->
+    <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+    <!-- Scrolling Track -->
+    <div class="flex items-center gap-12 sm:gap-20 whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
+      {partnersData.map((partner) => (
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200">
+          <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-[#111315]">
+            {partner.logoText}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Duplicate for seamless loop (aria-hidden for screen readers) -->
+    <div class="flex items-center gap-12 sm:gap-20 whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused] ml-12 sm:ml-20" aria-hidden="true">
+      {partnersData.map((partner) => (
+        <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-200">
+          <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-[#111315]">
+            {partner.logoText}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+      transform: none;
+    }
+  }
+</style>

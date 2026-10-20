@@ -1,0 +1,30 @@
+---
+import { announcementText } from '../../data/navigation';
+
+interface Props {
+  text?: string;
+  link?: string;
+}
+
+const { text = announcementText, link = '/technologies' } = Astro.props;
+---
+
+<aside
+  aria-label="Announcement"
+  class="w-full bg-gradient-to-r from-[#F4511E] to-[#FF8A5C] text-white py-2 px-4 text-center text-xs sm:text-sm font-medium tracking-wide relative z-40 transition-colors"
+>
+  <div class="max-w-[1320px] mx-auto flex items-center justify-center gap-2">
+    <span>{text}</span>
+    {link && (
+      <a
+        href={link}
+        class="inline-flex items-center underline hover:no-underline font-semibold focus-visible:outline-white ml-1 text-white/95 hover:text-white"
+      >
+        Learn more
+        <svg class="w-3.5 h-3.5 ml-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+          <path d="M4 8h8M8 4l4 4-4 4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    )}
+  </div>
+</aside>

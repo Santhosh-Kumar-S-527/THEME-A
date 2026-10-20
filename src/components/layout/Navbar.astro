@@ -1,0 +1,77 @@
+---
+import { navLinks } from '../../data/navigation';
+import MobileMenu from './MobileMenu.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+---
+
+<header class="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-[#E6E2DF] transition-all">
+  <div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center group" aria-label="Lingaasys - Back to homepage">
+      <img
+        src="/images/logo/logo-dark-text.svg"
+        alt="Lingaasys"
+        class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+      />
+    </a>
+
+    <!-- Desktop Navigation Links (Underline indicator removed) -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Primary Navigation">
+      {navLinks.map((item) => {
+        const isActive = item.href === '/'
+          ? currentPath === '/'
+          : currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'text-sm font-medium transition-colors duration-200 py-1 focus-visible:outline-2 focus-visible:outline-[#E7430B]',
+              isActive
+                ? 'text-[#E7430B] font-semibold'
+                : 'text-[#111315] hover:text-[#E7430B]'
+            ]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Mobile Hamburger Toggle -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button
+        type="button"
+        id="open-mobile-menu"
+        class="w-11 h-11 rounded-full flex items-center justify-center border border-[#E6E2DF] text-[#111315] hover:bg-[#FAF7F5] focus-visible:outline-2 focus-visible:outline-[#E7430B]"
+        aria-label="Open primary menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <MobileMenu currentPath={currentPath} />
+</header>
+
+<script>
+  const openBtn = document.getElementById('open-mobile-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileDrawer = document.getElementById('mobile-menu-drawer');
+
+  openBtn?.addEventListener('click', () => {
+    if (!mobileMenu || !mobileDrawer) return;
+    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+    mobileDrawer.classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  });
+</script>

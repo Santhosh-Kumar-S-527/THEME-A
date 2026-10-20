@@ -1,0 +1,91 @@
+---
+import Container from '../../common/Container.astro';
+---
+
+<section id="about" class="py-20 sm:py-28 bg-white border-b border-[#E6E2DF]">
+  <Container>
+    <!-- Section Header: Clean two-line title without colored words & Right-aligned paragraph -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-16">
+      <div class="lg:col-span-7">
+        <h2 class="text-3xl sm:text-4xl lg:text-[36px] font-heading font-normal text-[#111315] leading-[1.2] tracking-[-0.03em]">
+          Who is Lingaasys <br />
+          What we build
+        </h2>
+      </div>
+
+      <div class="lg:col-span-5 lg:text-right">
+        <p class="text-sm sm:text-base font-sans text-[#4A5157] leading-relaxed max-w-md lg:ml-auto">
+          We bring together curious people, diverse perspectives and shared ambition to bring technology that put people.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Layout: 12 Columns (Left Photo: 5 cols, Right Grid: 7 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Left Column: Authentic Tactile Photo Card (rounded-3xl 24px) -->
+      <div class="lg:col-span-5 rounded-3xl overflow-hidden shadow-sm relative min-h-[460px] lg:min-h-full bg-[#FAF7F5]">
+        <img
+          src="/images/photography/about-craft.jpg"
+          alt="Tactile design items, fabric swatches, color cards, and notebook with Let's Talk About Your Project"
+          class="w-full h-full object-cover rounded-3xl block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Right Column: 3 Cards (Top 2 in 2-column grid, Bottom full-width span-2) -->
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Card 1: Top-Left Peach Card (card-tint) -->
+        <div class="rounded-2xl bg-[#FDEEE8] p-8 flex flex-col justify-center">
+          <h3 class="text-[22px] font-heading font-medium text-[#F05B36] mb-3 leading-snug">
+            Built around people
+          </h3>
+          <p class="text-sm font-sans text-[#111315] leading-relaxed">
+            Lingaasys is an AI-powered software company that turns complex business challenges into practical digital products, intelligent platforms, and scalable systems.
+          </p>
+        </div>
+
+        <!-- Card 2: Top-Right Stats Card (card-tint) -->
+        <div class="rounded-2xl bg-[#FDEEE8] p-8 flex flex-col justify-center items-start gap-6">
+          <div>
+            <div class="font-heading font-medium text-[28px] text-[#E7430B] leading-tight mb-1">
+              12+ Years
+            </div>
+            <p class="text-sm font-sans text-[#4A5157]">
+              Product and engineering expertise
+            </p>
+          </div>
+          <div>
+            <div class="font-heading font-medium text-[28px] text-[#E7430B] leading-tight mb-1">
+              240 Clients
+            </div>
+            <p class="text-sm font-sans text-[#4A5157]">
+              Businesses supported worldwide
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Bottom Full-Width Accent Card (card-accent) -->
+        <div class="col-span-1 sm:col-span-2 rounded-2xl bg-[#F05B36] p-8 text-white flex flex-col justify-between shadow-sm">
+          <div class="max-w-xl">
+            <h3 class="text-2xl font-heading font-medium text-white mb-3">
+              From ideas to impact
+            </h3>
+            <p class="text-sm font-sans text-white/95 leading-relaxed">
+              We partner with teams to design and build AI solutions, web and mobile products, cloud platforms, data systems, and automation combining strategy, design, and engineering from idea to launch.
+            </p>
+          </div>
+
+          <div>
+            <a
+              href="/about"
+              class="text-white font-sans font-medium hover:underline text-sm inline-flex items-center gap-2 mt-4 group focus-visible:outline-white"
+            >
+              <span>Discover Lingaasys</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

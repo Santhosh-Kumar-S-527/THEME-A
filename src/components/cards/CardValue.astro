@@ -1,0 +1,43 @@
+---
+import type { ValueItem } from '../../types';
+
+interface Props {
+  value: ValueItem;
+}
+
+const { value } = Astro.props;
+---
+
+<div class="bg-[#FAF7F5] border border-[#E6E2DF] hover:border-[#CFC9C5] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 group">
+  <!-- Orange circular icon badge -->
+  <div class="w-12 h-12 rounded-full bg-[#E7430B] flex items-center justify-center text-white mb-5 shadow-sm group-hover:scale-105 transition-transform">
+    {value.iconName === 'sparkles' && (
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/>
+      </svg>
+    )}
+    {value.iconName === 'shield-check' && (
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+      </svg>
+    )}
+    {value.iconName === 'heart-handshake' && (
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    )}
+    {(!value.iconName || value.iconName === 'arrow-up-right') && (
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+      </svg>
+    )}
+  </div>
+
+  <h3 class="text-xl font-heading font-semibold text-[#111315] mb-2">
+    {value.title}
+  </h3>
+
+  <p class="text-sm font-sans text-[#4A5157] leading-relaxed">
+    {value.description}
+  </p>
+</div>

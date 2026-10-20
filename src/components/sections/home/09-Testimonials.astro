@@ -1,0 +1,79 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+import CardTestimonial from '../../cards/CardTestimonial.astro';
+import { testimonialsData } from '../../../data/testimonials';
+---
+
+<section id="testimonials" class="py-24 sm:py-32 bg-white border-b border-[#E6E2DF] overflow-hidden">
+  <Container>
+    <!-- Centered Title with One-line Subhead -->
+    <SectionHeading
+      eyebrow="Client Endorsements"
+      title="Built with people."
+      highlight="Connected by technology."
+      align="center"
+      description="Hear directly from technology leaders and chief architects running mission-critical systems engineered by Lingaasys."
+    />
+
+    <!-- Carousel Controls & Scroll Track -->
+    <div class="relative mt-12">
+      <!-- Scroll Track Container -->
+      <div
+        id="testimonials-track"
+        class="flex gap-6 overflow-x-auto pb-8 pt-2 scroll-smooth no-scrollbar snap-x snap-mandatory"
+        tabindex="0"
+        aria-label="Client Testimonials Carousel"
+      >
+        {testimonialsData.map((test) => (
+          <div class="w-[85vw] sm:w-[420px] shrink-0 snap-start">
+            <CardTestimonial testimonial={test} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Circular Controls: Prev & Next (Indicator removed) -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button
+          type="button"
+          id="testimonial-prev-btn"
+          class="w-12 h-12 rounded-full border border-[#E6E2DF] bg-white hover:bg-[#FAF7F5] hover:border-[#E7430B] flex items-center justify-center text-[#111315] hover:text-[#E7430B] transition-colors shadow-sm focus-visible:outline-2 focus-visible:outline-[#E7430B]"
+          aria-label="Previous testimonial"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M10 12L6 8l4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          id="testimonial-next-btn"
+          class="w-12 h-12 rounded-full border border-[#E6E2DF] bg-white hover:bg-[#FAF7F5] hover:border-[#E7430B] flex items-center justify-center text-[#111315] hover:text-[#E7430B] transition-colors shadow-sm focus-visible:outline-2 focus-visible:outline-[#E7430B]"
+          aria-label="Next testimonial"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M6 4l4 4-4 4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  const track = document.getElementById('testimonials-track');
+  const prevBtn = document.getElementById('testimonial-prev-btn');
+  const nextBtn = document.getElementById('testimonial-next-btn');
+
+  if (track && prevBtn && nextBtn) {
+    const cardWidth = 444; // card width + gap
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  }
+</script>

@@ -1,0 +1,158 @@
+---
+interface Props {
+  initialGreeting?: string;
+}
+
+const { initialGreeting = 'Have a question? Ask our AI assistant.' } = Astro.props;
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-auto" id="chatbot-container">
+  <!-- Chat Popup Window -->
+  <div
+    id="chatbot-window"
+    class="hidden w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-[#E6E2DF] overflow-hidden mb-3 transition-all duration-300 transform origin-bottom-right"
+    role="dialog"
+    aria-label="Lingaasys AI Assistant"
+  >
+    <!-- Header (Pulse indicator removed) -->
+    <div class="bg-[#050708] p-4 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-[#E7430B] flex items-center justify-center text-white">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-white">Lingaasys Copilot</h3>
+          <p class="text-[11px] text-[#CFC9C5]">
+            Online · Instant Answers
+          </p>
+        </div>
+      </div>
+      <button
+        type="button"
+        id="chatbot-close-btn"
+        class="text-neutral-400 hover:text-white p-1 rounded-lg transition-colors focus-visible:outline-white"
+        aria-label="Close Chat"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Message History -->
+    <div id="chatbot-messages" class="p-4 space-y-3 max-h-72 overflow-y-auto text-xs bg-[#FAF7F5]">
+      <div class="bg-white p-3 rounded-xl rounded-tl-none border border-[#E6E2DF] shadow-sm text-[#4A5157]">
+        <p class="font-medium text-[#111315] mb-1">Hello! 👋</p>
+        <p>{initialGreeting}</p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 pt-1">
+        <button type="button" class="quick-prompt px-2.5 py-1 rounded-full bg-white border border-[#E6E2DF] text-[11px] text-[#4A5157] hover:border-[#E7430B] hover:text-[#E7430B] transition-colors">
+          Explore AI Services
+        </button>
+        <button type="button" class="quick-prompt px-2.5 py-1 rounded-full bg-white border border-[#E6E2DF] text-[11px] text-[#4A5157] hover:border-[#E7430B] hover:text-[#E7430B] transition-colors">
+          Industry Solutions
+        </button>
+        <button type="button" class="quick-prompt px-2.5 py-1 rounded-full bg-white border border-[#E6E2DF] text-[11px] text-[#4A5157] hover:border-[#E7430B] hover:text-[#E7430B] transition-colors">
+          Talk to Engineering
+        </button>
+      </div>
+    </div>
+
+    <!-- Input Footer -->
+    <div class="p-3 bg-white border-t border-[#E6E2DF]">
+      <form id="chatbot-form" class="flex gap-2">
+        <input
+          type="text"
+          id="chatbot-input"
+          placeholder="Ask about capabilities, stack..."
+          class="flex-1 px-3 py-2 text-xs border border-[#E6E2DF] rounded-full focus:outline-none focus:border-[#E7430B]"
+          required
+        />
+        <button
+          type="submit"
+          class="w-8 h-8 rounded-full bg-[#E7430B] hover:bg-[#F4511E] text-white flex items-center justify-center shrink-0 transition-colors"
+          aria-label="Send message"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <path d="M2.5 8h11M9 3.5l4.5 4.5-4.5 4.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Trigger Button (Indicator ping removed) -->
+  <button
+    type="button"
+    id="chatbot-trigger-btn"
+    class="group relative flex items-center gap-2.5 bg-[#050708] hover:bg-[#111519] text-white pl-3.5 pr-4 py-2.5 rounded-full shadow-xl hover:shadow-[0_0_28px_rgba(231,67,11,0.35)] transition-all duration-300 border border-[#293036] focus-visible:outline-2 focus-visible:outline-[#E7430B]"
+    aria-expanded="false"
+    aria-controls="chatbot-window"
+    aria-label="Open AI Assistant"
+  >
+    <span class="w-7 h-7 rounded-full bg-[#E7430B] flex items-center justify-center text-white shrink-0">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+      </svg>
+    </span>
+    <span class="text-xs font-semibold tracking-wide font-sans hidden sm:inline-block">
+      Ask Lingaasys AI
+    </span>
+  </button>
+</div>
+
+<script>
+  const triggerBtn = document.getElementById('chatbot-trigger-btn');
+  const chatWindow = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('chatbot-close-btn');
+  const form = document.getElementById('chatbot-form') as HTMLFormElement | null;
+  const input = document.getElementById('chatbot-input') as HTMLInputElement | null;
+  const messages = document.getElementById('chatbot-messages');
+  const quickPrompts = document.querySelectorAll('.quick-prompt');
+
+  function toggleChat() {
+    const isHidden = chatWindow?.classList.contains('hidden');
+    if (isHidden) {
+      chatWindow?.classList.remove('hidden');
+      triggerBtn?.setAttribute('aria-expanded', 'true');
+      input?.focus();
+    } else {
+      chatWindow?.classList.add('hidden');
+      triggerBtn?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  triggerBtn?.addEventListener('click', toggleChat);
+  closeBtn?.addEventListener('click', toggleChat);
+
+  function appendBotReply(query: string) {
+    if (!messages) return;
+    const userMsg = document.createElement('div');
+    userMsg.className = 'bg-[#E7430B] text-white p-2.5 rounded-xl rounded-tr-none text-xs ml-6 shadow-sm';
+    userMsg.textContent = query;
+    messages.appendChild(userMsg);
+
+    const replyMsg = document.createElement('div');
+    replyMsg.className = 'bg-white p-2.5 rounded-xl rounded-tl-none border border-[#E6E2DF] text-xs text-[#4A5157] mr-6 shadow-sm';
+    replyMsg.textContent = `Thanks for asking about "${query}". Our engineering team specializes in scalable B2B systems. You can reach our architects directly below or explore our Technologies page!`;
+    messages.appendChild(replyMsg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!input || !input.value.trim()) return;
+    const val = input.value.trim();
+    input.value = '';
+    appendBotReply(val);
+  });
+
+  quickPrompts.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const text = btn.textContent?.trim() || '';
+      appendBotReply(text);
+    });
+  });
+</script>

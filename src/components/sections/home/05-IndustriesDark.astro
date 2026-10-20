@@ -1,0 +1,54 @@
+---
+import Container from '../../common/Container.astro';
+import CardIndustry from '../../cards/CardIndustry.astro';
+import { industriesData } from '../../../data/industries';
+---
+
+<section id="industries" class="py-24 sm:py-28 bg-[#050708] text-white relative overflow-hidden">
+  <!-- Subtle ambient glow for atmospheric depth -->
+  <div class="absolute -top-32 left-1/4 w-96 h-96 bg-[#E7430B]/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <Container>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <!-- Left Column: Copy & Actions (~35% width on desktop) -->
+      <div class="lg:col-span-4 lg:sticky lg:top-28">
+        <h2 class="text-3xl sm:text-4xl lg:text-[40px] font-heading font-medium leading-[1.15] text-[#F7F8F8]">
+          Technology<br />
+          Built For<br />
+          <span class="text-[#F05B36]">Every Industry</span>
+        </h2>
+
+        <p class="font-sans text-[14px] sm:text-[15px] text-[#94A3B8] leading-[1.6] max-w-md my-6">
+          We build domain-specific platforms and intelligent systems tailored to operational realities—empowering teams to automate workflows, optimize supply lines, and scale with resilience.
+        </p>
+
+        <!-- Side-by-side CTA row -->
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a
+            href="/industries"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded-full text-sm font-medium text-white bg-[#E7430B] hover:bg-[#F4511E] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F05B36] focus:ring-offset-2 focus:ring-offset-[#050708]"
+          >
+            <span>Explore Industries</span>
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-full text-sm font-medium text-[#F7F8F8] bg-transparent border border-[#293036] hover:border-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-[#050708]"
+          >
+            Talk to Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: 8 Photographic Industry Tiles (~65% width on desktop) -->
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
+          {industriesData.map((ind) => (
+            <CardIndustry industry={ind} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

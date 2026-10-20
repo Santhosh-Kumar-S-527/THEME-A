@@ -1,0 +1,33 @@
+---
+import Container from '../../common/Container.astro';
+import SectionHeading from '../../common/SectionHeading.astro';
+import Button from '../../common/Button.astro';
+import CardArticle from '../../cards/CardArticle.astro';
+import { articlesData } from '../../../data/articles';
+---
+
+<section id="insights" class="py-24 sm:py-32 bg-[#FAF7F5] border-b border-[#E6E2DF]">
+  <Container>
+    <!-- Left-aligned Title with "View All Blogs" Outline Pill at Right -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
+      <SectionHeading
+        eyebrow="Research & Analysis"
+        title="Technology that turns"
+        highlight="Possibilities into Progress"
+        class="!mb-0"
+      />
+      <div class="shrink-0 mb-4 sm:mb-0">
+        <Button href="/technologies" variant="secondary" size="sm">
+          View All Blogs
+        </Button>
+      </div>
+    </div>
+
+    <!-- Four Equal Article Cards in a Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {articlesData.map((article) => (
+        <CardArticle article={article} />
+      ))}
+    </div>
+  </Container>
+</section>

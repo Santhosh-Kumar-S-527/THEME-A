@@ -1,0 +1,59 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'dark' | 'outline-dark' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  target?: string;
+  rel?: string;
+  withArrow?: boolean;
+  id?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  class: className = '',
+  target,
+  rel,
+  withArrow = false,
+  id,
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-sans font-medium rounded-full transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 min-h-[44px] cursor-pointer text-center';
+
+const variantStyles = {
+  primary: 'bg-[#E7430B] text-white hover:bg-[#F4511E] active:bg-[#C93A09] shadow-sm hover:shadow-[0_0_24px_rgba(231,67,11,0.28)]',
+  secondary: 'bg-transparent text-[#111315] border border-[#CFC9C5] hover:border-[#E7430B] hover:text-[#E7430B] active:bg-[#FAF7F5]',
+  dark: 'bg-[#050708] text-[#F7F8F8] hover:bg-[#111519] border border-[#293036] active:bg-black',
+  'outline-dark': 'bg-transparent text-[#F7F8F8] border border-[#293036] hover:border-[#F7F8F8] hover:bg-white/5 active:bg-white/10',
+  ghost: 'bg-transparent text-[#E7430B] hover:text-[#F4511E] p-0 min-h-0',
+};
+
+const sizeStyles = {
+  sm: 'px-4 py-1.5 text-xs tracking-wide',
+  md: 'px-6 py-3 text-sm tracking-normal',
+  lg: 'px-8 py-3.5 text-base font-semibold',
+};
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  id={id}
+  href={href}
+  type={!href ? type : undefined}
+  target={target}
+  rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+  class:list={[baseStyles, variantStyles[variant], sizeStyles[size], className]}
+>
+  <slot />
+  {withArrow && (
+    <svg class="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+      <path d="M3.333 8h9.334M8.667 4l4 4-4 4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  )}
+</Element>
